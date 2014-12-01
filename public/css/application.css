@@ -1,0 +1,100 @@
+@import url(http://fonts.googleapis.com/css?family=Quicksand|Marvel|Share|Advent+Pro);
+
+body {
+  text-align: center;
+}
+
+a {
+  text-decoration: none
+}
+
+.logo {
+  font-size: 4em;
+}
+.secondary-logo {
+  font-size: 2em;
+  color: #816474;
+  font-family: "Advent Pro";
+}
+
+/*.secondary-byline {
+  font-size: 1em;
+  font-weight: 500px;
+  font-family: "Advent Pro";
+  margin-top: -2%;
+}
+.secondary-byline span {
+  background: #816474;
+  border: 2px solid #816474;
+  border-bottom-right-radius: 7px;
+  border-top-left-radius: 5px;
+
+}*/
+
+.entrance {
+  font-family: "Advent Pro";
+  color: #816474;
+}
+
+.entrance h2 {
+  letter-spacing: 10px;
+  font-size: 1em;
+  margin-top: -2%;
+  color: #816474;
+}
+.entrance a:hover {
+  background-color: #816474;
+  color: black;
+}
+
+.sign-in form {
+  margin: 2%;
+  display: block;
+}
+
+.icon {
+  opacity: 0.3;
+  display: inline-block;
+}
+
+.icon:hover {
+  opacity: 0.4;
+  display: inline-block;
+}
+
+.top-triangle {
+  margin-top: 5%;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid #816474;
+}
+
+.bottom-triangle {
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-top: 100px solid #816474;
+}
+
+.story {
+  font-family: 'Quicksand';
+  border: 2px solid #816474;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 5%;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 10px;
+  padding: 5px;
+}
+
+.story h3 {
+  font-size: 1em;
+}
+
+.story:hover{
+  background-color: #D9D1D5;
+}
+

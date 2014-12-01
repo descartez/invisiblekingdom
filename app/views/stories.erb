@@ -1,0 +1,7 @@
+<h1 class="secondary-logo">Invisible Kingdom</h1>
+<% @stories.each do |story| %>
+<div class="story">
+  <h3><%=story.content%></h3>
+  <p>(<%=story.longitude%>,<%=story.lattitude%>)</p>
+</div>
+<% end %>
