@@ -18,4 +18,9 @@ $(document).ready(function() {
     });
   });
 
+  $('.map-story').on('click', function(e){
+    e.preventDefault();
+    console.log('should redirect to map: use a partial?');
+  });
+
 });
