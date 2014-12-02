@@ -1,5 +1,4 @@
 get '/' do
-  # @user = current_user
   erb :index
 end
 
@@ -13,11 +12,14 @@ get '/stories' do
   end
 end
 
-get '/stories/new' do
-  new_story = Story.create!(longitude: Faker::Number.number(2), lattitude: Faker::Number.number(2))
-  new_story.story_maker
-  current_user.stories << new_story
-  redirect '/stories'
+post '/stories' do
+  if request.xhr?
+    new_story = Story.create!(longitude: params[:longitude], lattitude: params[:lattitude])
+    new_story.story_maker
+    current_user.stories << new_story
+    content_type :json
+    new_story.to_json
+  end
 end
 
 get '/sessions' do
