@@ -4,7 +4,7 @@ class CreateStories < ActiveRecord::Migration
       t.belongs_to :user
       t.string :content
       t.integer :longitude
-      t.integer :lattitude
+      t.integer :latitude
 
       t.timestamps
     end

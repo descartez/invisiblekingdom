@@ -43,6 +43,11 @@ i {
   display: block;
 }
 
+.sign-up form {
+  margin: 2%;
+  display: block;
+}
+
 .icon {
   opacity: 0.3;
   display: inline-block;

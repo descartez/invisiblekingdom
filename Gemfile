@@ -17,6 +17,7 @@ gem 'shotgun'
 
 gem 'faker'
 gem 'bcrypt-ruby'
+gem 'httparty'
 
 group :test do
   gem 'shoulda-matchers'

@@ -14,12 +14,23 @@ end
 
 post '/stories' do
   if request.xhr?
-    new_story = Story.create!(longitude: params[:longitude], lattitude: params[:lattitude])
+    new_story = Story.create!(longitude: params[:longitude], latitude: params[:latitude])
     new_story.story_maker
     current_user.stories << new_story
     content_type :json
     new_story.to_json
   end
+end
+
+get '/sign_up' do
+  erb :sign_up
+end
+
+post '/sign_up' do
+  # I MADE A HELPER METHOD USE IT FOOL
+  @valid_user = User.create(email: params[:email], password: params[:password])
+  @valid_user.stories.create(content: "Welcome. Explore by activating the Eye.", longitude: 0, latitude: 0)
+  redirect '/sessions'
 end
 
 get '/sessions' do
@@ -35,7 +46,7 @@ post '/sessions' do
   if @valid_user.nil?
     redirect '/sessions'
   elsif @valid_user.authenticate(params[:password])
-    session[:user_id] = @valid_user.id
+    make_session(@valid_user.id)
     redirect '/stories'
   end
 end
@@ -43,4 +54,29 @@ end
 delete '/sessions/:id' do
   session.clear
   redirect '/'
+end
+
+get '/oauth/google' do
+  client_id = "845889692605-3i350aolkkmpqf5hvj8bmn8rkmoa61bt.apps.googleusercontent.com"
+  redirect "https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=#{client_id}&redirect_uri=http://localhost:9393/oauth/google/logged_in&scope=https://www.googleapis.com/auth/plus.profile.emails.read&state=12345&approval_prompt=force"
+end
+
+get '/oauth/google/logged_in' do
+  p params
+token_response = HTTParty.post("https://accounts.google.com/o/oauth2/token",
+                                body: {
+                                      code: params[:code],
+                                      client_id: "845889692605-3i350aolkkmpqf5hvj8bmn8rkmoa61bt.apps.googleusercontent.com",
+                                      client_secret: "9vHB13baUwPRoiZE9jZmweTI",
+                                      redirect_uri: "http://localhost:9393/oauth/google/logged_in",
+                                      grant_type: "authorization_code"
+                                })
+
+
+  google_plus_response = HTTParty.get("https://www.googleapis.com/plus/v1/people/me?access_token=#{token_response["access_token"]}")
+  @user = User.find_or_create_by(email: "#{google_plus_response['emails'][0]['value']}")
+  @stories = @user.stories
+  make_session(@user.id)
+
+  redirect '/stories'
 end
