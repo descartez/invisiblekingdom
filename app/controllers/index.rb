@@ -1,3 +1,5 @@
+Dotenv.load
+
 get '/' do
   erb :index
 end
@@ -62,11 +64,10 @@ get '/oauth/google' do
 end
 
 get '/oauth/google/logged_in' do
-  p params
 token_response = HTTParty.post("https://accounts.google.com/o/oauth2/token",
                                 body: {
                                       code: params[:code],
-                                      client_id: "845889692605-3i350aolkkmpqf5hvj8bmn8rkmoa61bt.apps.googleusercontent.com",
+                                      client_id: ENV["CLIENT_ID"],
                                       client_secret: "9vHB13baUwPRoiZE9jZmweTI",
                                       redirect_uri: "http://localhost:9393/oauth/google/logged_in",
                                       grant_type: "authorization_code"
