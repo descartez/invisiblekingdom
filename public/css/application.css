@@ -2,6 +2,7 @@
 
 body {
   text-align: center;
+  /*background-image: url(http://i.imgur.com/i10pkYJ.gif);*/
 }
 
 a {
@@ -22,6 +23,24 @@ i {
   font-family: "Advent Pro";
 }
 
+.new-story {
+  color: #816474;
+  font-family: "Advent Pro";
+  border: 2px solid #816474;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-bottom: 3%;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 10px;
+  display: block;
+  font-size: 2em;
+  background-color: white;
+  /*opacity: 0.7;*/
+}
+
+.new-story:hover{
+  background-color: #D9D1D5;
+}
 .entrance {
   font-family: "Advent Pro";
   color: #816474;
@@ -54,10 +73,10 @@ i {
 }
 
 
-.icon:hover {
+/*.icon:hover {
   opacity: 0.4;
   display: inline-block;
-}
+}*/
 
 .top-triangle {
   margin-top: 5%;
@@ -85,20 +104,20 @@ i {
   border-bottom-right-radius: 20px;
   border-top-left-radius: 10px;
   padding: 5px;
+  background-color: white;
+  /*opacity: 0.5;*/
 }
 
 .story h3 {
   font-size: 1em;
 }
 
-.story:hover{
-  background-color: #D9D1D5;
-}
 
 .sign-out{
   font-family: 'Quicksand';
   list-style-type: none;
-  position: absolute;
+  position: absolute; right: 2px; top: 2px;
+  margin: 2%;
   /*float: right;*/
 
 }

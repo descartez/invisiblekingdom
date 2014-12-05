@@ -39,30 +39,30 @@ $(document).ready(function() {
 function StoryView(){};
 
 StoryView.prototype.populateAndAddStoryTemplate = function(content, longitude, latitude){
-  var template = "<article class='story'><h3>" + content + "</h3><p>" + longitude +" , " + latitude + "</p></article>";
+  var template = "<article class='story'><h3>" + content + "</h3><p>(" + longitude +" , " + latitude + ")</p></article>";
   $(".story-feed").prepend(template);
 };
 
 StoryView.prototype.findCurrentLocation = function() {
-  var coords;
-  setTimeout((function() {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        coords = {
-          lng: position.coords.longitude,
-          lat: position.coords.latitude
-        };
-      }, function(){console.log("there was an error")}, {timeout:1000});
-    return coords;
-  })(),1000);
-  return coords;
-}
+  // var coords;
+  // setTimeout((function() {
+  //     navigator.geolocation.getCurrentPosition(function(position) {
+  //       coords = {
+  //         lng: position.coords.longitude,
+  //         lat: position.coords.latitude
+  //       };
+  //     }, function(){console.log("there was an error")}, {timeout:1000});
+  //   return coords;
+  // })(),1000);
+  // return coords;
+};
 
 // ------Model ------- //
 function Story(content, longitude, latitude){
   this.content = content;
   this.longitude = longitude;
   this.latitude = latitude;
-};
+}
 
 // ------Controller ------- //
 function StoryController(view){
@@ -74,7 +74,7 @@ StoryController.prototype.init = function(){
   this.bindEventListeners();
   // this.populateStoryCollection();
   // this.createStoryRiver();
-}
+};
 
 StoryController.prototype.bindEventListeners = function(){
   $('.new-story').on('click', this.getNewStory.bind(this));
