@@ -36,25 +36,60 @@ $(document).ready(function() {
 });
 
 // ------View ------- //
-function StoryView(){};
+function StoryView(){}
 
 StoryView.prototype.populateAndAddStoryTemplate = function(content, longitude, latitude){
-  var template = "<article class='story'><h3>" + content + "</h3><p>(" + longitude +" , " + latitude + ")</p></article>";
+  var template = "<article class='story'><h3>" + content + "</h3><p>(" + longitude +"," + latitude + ")</p></article>";
   $(".story-feed").prepend(template);
 };
 
 StoryView.prototype.findCurrentLocation = function() {
-  // var coords;
-  // setTimeout((function() {
-  //     navigator.geolocation.getCurrentPosition(function(position) {
-  //       coords = {
-  //         lng: position.coords.longitude,
-  //         lat: position.coords.latitude
-  //       };
-  //     }, function(){console.log("there was an error")}, {timeout:1000});
-  //   return coords;
-  // })(),1000);
-  // return coords;
+  // if (navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(this.positionSuccess);
+  // }else{
+  //   this.positionFail();
+  // }
+
+};
+
+StoryView.prototype.positionSuccess = function(position) {
+    var lng = position.coords.longitude;
+    var lat = position.coords.latitude;
+
+    request = $.ajax({
+    url: '/stories',
+    type: 'post',
+    data: {longitude: lng, latitude: lat}
+  });
+
+  request.done(function(data){
+    console.log(data);
+    this.currentStory = new Story(data.content, data.longitude, data.latitude);
+    this.view.populateAndAddStoryTemplate(this.currentStory.content, this.currentStory.longitude, this.currentStory.latitude);
+  }.bind(me));
+
+  request.fail(function(data){
+    console.log('wat');
+  });
+};
+
+StoryView.prototype.positionFail = function() {
+  console.log("fail")
+  request = $.ajax({
+    url: '/stories',
+    type: 'post',
+    data: {longitude: -123, latitude: -48}
+  });
+
+  request.done(function(data){
+    console.log(data);
+    this.currentStory = new Story(data.content, data.longitude, data.latitude);
+    this.view.populateAndAddStoryTemplate(this.currentStory.content, this.currentStory.longitude, this.currentStory.latitude);
+  }.bind(me));
+
+  request.fail(function(data){
+    console.log('wat');
+  });
 };
 
 // ------Model ------- //
@@ -72,8 +107,6 @@ function StoryController(view){
 
 StoryController.prototype.init = function(){
   this.bindEventListeners();
-  // this.populateStoryCollection();
-  // this.createStoryRiver();
 };
 
 StoryController.prototype.bindEventListeners = function(){
@@ -82,22 +115,8 @@ StoryController.prototype.bindEventListeners = function(){
 
 StoryController.prototype.getNewStory = function(e) {
   e.preventDefault();
-  var me = this;
-
-  request = $.ajax({
-    url: '/stories',
-    type: 'post',
-    data: {longitude: 7, latitude: 7}
-  });
-
-  request.done(function(data){
-    this.currentStory = new Story(data.content, data.longitude, data.latitude);
-    this.view.populateAndAddStoryTemplate(this.currentStory.content, this.currentStory.longitude, this.currentStory.latitude);
-  }.bind(me));
-
-  request.fail(function(data){
-    console.log('wat');
-  });
+  me = this;
+  this.view.findCurrentLocation();
 };
 
 
