@@ -63,7 +63,7 @@ delete '/sessions/:id' do
 end
 
 get '/oauth/google' do
-  redirect "https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=#{ENV["CLIENT_ID"]}&redirect_uri=http://localhost:9393/oauth/google/logged_in&scope=https://www.googleapis.com/auth/plus.profile.emails.read&state=12345&approval_prompt=force"
+  redirect "https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=#{ENV["CLIENT_ID"]}&redirect_uri=https://invisiblekingdom.herokuapp.com/oauth/google/logged_in&scope=https://www.googleapis.com/auth/plus.profile.emails.read&state=12345&approval_prompt=force"
 end
 
 get '/oauth/google/logged_in' do
@@ -72,7 +72,7 @@ token_response = HTTParty.post("https://accounts.google.com/o/oauth2/token",
                                       code: params[:code],
                                       client_id: ENV["CLIENT_ID"],
                                       client_secret: ENV["CLIENT_SECRET"],
-                                      redirect_uri: "http://localhost:9393/oauth/google/logged_in",
+                                      redirect_uri: "https://invisiblekingdom.herokuapp.com/oauth/google/logged_in",
                                       grant_type: "authorization_code"
                                 })
 
