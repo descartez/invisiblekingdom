@@ -1,38 +1,6 @@
 $(document).ready(function() {
   var controller = new StoryController( new StoryView() );
   controller.init();
-  // $('.new-story').on('click', function(e){
-  //   e.preventDefault();
-  //   // function
-  //   if (navigator.geolocation){
-  //     navigator.geolocation.getCurrentPosition(function(position) {
-  //       var coords = {
-  //         lng: position.coords.longitude,
-  //         lat: position.coords.latitude
-  //       };
-  //       // }
-  //       // function
-  //       $.ajax({
-  //         url: '/stories',
-  //         type: 'post',
-  //         data: {longitude: coords.lng, latitude: coords.lat}
-  //       }).done(function(serverData){
-  //         console.log(serverData);
-  //         addStory(serverData);
-  //         console.log('success!');
-  //       }).fail(function(serverData){
-  //         console.log('wat');
-  //       });
-  //     }
-  //     );
-
-  //     // fine
-  //     $('.map-story').on('click', function(e){
-  //       e.preventDefault();
-  //       console.log('should redirect to map: use a partial?');
-  //     });
-  //   }
-  // });
 });
 
 // ------View ------- //
