@@ -19,6 +19,7 @@ get '/stories' do
 end
 
 post '/stories' do
+  # stories create_story method should be here
   if request.xhr?
     new_story = Story.create!(longitude: params[:longitude], latitude: params[:latitude])
     new_story.story_maker
@@ -29,7 +30,7 @@ post '/stories' do
 end
 
 get '/sign_in/guest' do
-
+  if
 end
 
 get '/sign_up' do
