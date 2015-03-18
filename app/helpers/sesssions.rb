@@ -16,8 +16,8 @@ helpers do
     @valid_user.stories.create(content: "Welcome. Explore by activating the Eye.", longitude: 0, latitude: 0)
   end
 
-  def check_guest
-    @guest = User.find(email:'guest@guest.com')
+  def check_guest_login
+    @guest = User.find_by_email('guest@guest.com')
     if !!(@guest)
       @guest.authenticate('guest')
       make_session(@guest.id)
@@ -25,7 +25,12 @@ helpers do
     else
       @guest_user = User.create(email: 'guest@guest.com', password: 'guest')
       @guest_user.stories.create(content: "Welcome. Explore by activating the Eye.", longitude: 0, latitude: 0)
-      check_guest
+      check_guest_login
     end
   end
+
+  def check_guest_logout
+
+  end
+
 end

@@ -29,9 +29,6 @@ post '/stories' do
   end
 end
 
-get '/sign_in/guest' do
-
-end
 
 get '/sign_up' do
   erb :sign_up
@@ -62,7 +59,13 @@ post '/sessions' do
   end
 end
 
+get '/sessions/guest' do
+  puts "WAT"
+  check_guest_login
+end
+
 delete '/sessions/:id' do
+  if current_user ==
   session.clear
   redirect '/'
 end
