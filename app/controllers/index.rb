@@ -19,14 +19,8 @@ get '/stories' do
 end
 
 post '/stories' do
-  # stories create_story method should be here
-  if request.xhr?
-    new_story = Story.create!(longitude: params[:longitude], latitude: params[:latitude])
-    new_story.story_maker
-    current_user.stories << new_story
-    content_type :json
-    new_story.to_json
-  end
+
+  create_story
 end
 
 
@@ -36,8 +30,7 @@ end
 
 post '/sign_up' do
   # make_user helper method should be here.
-  @valid_user = User.create(email: params[:email], password: params[:password])
-  @valid_user.stories.create(content: "Welcome. Explore by activating the Eye.", longitude: 0, latitude: 0)
+  make_user(params[:email], params[:password])
   redirect '/sessions'
 end
 
@@ -60,7 +53,6 @@ post '/sessions' do
 end
 
 get '/sessions/guest' do
-  puts "WAT"
   check_guest_login
 end
 
