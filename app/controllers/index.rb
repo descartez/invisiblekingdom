@@ -65,7 +65,7 @@ get '/sessions/guest' do
 end
 
 delete '/sessions/:id' do
-  if current_user ==
+  check_guest_logout
   session.clear
   redirect '/'
 end
