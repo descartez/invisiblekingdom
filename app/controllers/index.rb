@@ -28,12 +28,16 @@ post '/stories' do
   end
 end
 
+get '/sign_in/guest' do
+
+end
+
 get '/sign_up' do
   erb :sign_up
 end
 
 post '/sign_up' do
-  # I MADE A HELPER METHOD USE IT FOOL
+  # make_user helper method should be here.
   @valid_user = User.create(email: params[:email], password: params[:password])
   @valid_user.stories.create(content: "Welcome. Explore by activating the Eye.", longitude: 0, latitude: 0)
   redirect '/sessions'
