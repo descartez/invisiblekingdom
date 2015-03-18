@@ -17,11 +17,15 @@ helpers do
   end
 
   def check_guest
-    if !!(User.find(email:guest@guest.com))
-
+    @guest = User.find(email:'guest@guest.com')
+    if !!(@guest)
+      @guest.authenticate('guest')
+      make_session(@guest.id)
+      redirect '/stories'
     else
       @guest_user = User.create(email: 'guest@guest.com', password: 'guest')
       @guest_user.stories.create(content: "Welcome. Explore by activating the Eye.", longitude: 0, latitude: 0)
+      check_guest
     end
   end
 end

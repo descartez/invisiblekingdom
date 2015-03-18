@@ -30,7 +30,7 @@ post '/stories' do
 end
 
 get '/sign_in/guest' do
-  if
+
 end
 
 get '/sign_up' do
