@@ -19,13 +19,7 @@ get '/stories' do
 end
 
 post '/stories' do
-  if request.xhr?
-    new_story = Story.create!(longitude: params[:longitude], latitude: params[:latitude])
-    new_story.story_maker
-    current_user.stories << new_story
-    content_type :json
-    new_story.to_json
-  end
+  create_story
 end
 
 get '/sign_up' do

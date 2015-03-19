@@ -8,5 +8,4 @@ helpers do
       new_story.to_json
     end
   end
-
 end
