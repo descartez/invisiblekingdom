@@ -31,7 +31,6 @@ StoryView.prototype.positionSuccess = function(position) {
   });
 
   request.done(function(data){
-    console.log(data);
     this.currentStory = new Story(data.content, data.longitude, data.latitude);
     this.view.populateAndAddStoryTemplate(this.currentStory.content, this.currentStory.longitude, this.currentStory.latitude);
   }.bind(me));
@@ -50,7 +49,6 @@ StoryView.prototype.positionFail = function() {
   });
 
   request.done(function(data){
-    console.log(data);
     this.currentStory = new Story(data.content, data.longitude, data.latitude);
     this.view.populateAndAddStoryTemplate(this.currentStory.content, this.currentStory.longitude, this.currentStory.latitude);
   }.bind(me));
