@@ -12,12 +12,7 @@ StoryView.prototype.populateAndAddStoryTemplate = function(content, longitude, l
 };
 
 StoryView.prototype.findCurrentLocation = function() {
-  // if (navigator.geolocation){
     navigator.geolocation.getCurrentPosition(this.positionSuccess);
-  // }else{
-  //   this.positionFail();
-  // }
-
 };
 
 StoryView.prototype.positionSuccess = function(position) {
