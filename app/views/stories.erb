@@ -5,7 +5,7 @@
   <% @stories.each do |story| %>
   <article class="story">
     <h3><%=story.content%></h3>
-    <p>(<%=story.longitude%>,<%=story.latitude%>)</p>
+    <p><a href="http://maps.google.com/maps?q=<%=story.longitude%>,<%=story.latitude%>">(<%=story.longitude%>,<%=story.latitude%>)</a></p>
   </article>
   <% end %>
 </div>

@@ -40,7 +40,13 @@ i {
 
 .new-story:hover{
   background-color: #D9D1D5;
+  cursor:pointer;
 }
+
+i.new-story:hover{
+  cursor:pointer;
+}
+
 .entrance {
   font-family: "Advent Pro";
   color: #816474;

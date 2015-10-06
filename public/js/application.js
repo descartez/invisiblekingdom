@@ -7,7 +7,8 @@ $(document).ready(function() {
 function StoryView(){}
 
 StoryView.prototype.populateAndAddStoryTemplate = function(content, longitude, latitude){
-  var template = "<article class='story'><h3>" + content + "</h3><p>(" + longitude +"," + latitude + ")</p></article>";
+  var template = "<article class='story'><h3>" + content + "</h3><p><a href='http://maps.google.com/maps?q="+ longitude +',' + latitude + "'>(" + longitude +"," + latitude + ")</a></p></article>";
+  console.log('Loaded new story!')
   $(".story-feed").prepend(template);
 };
 
