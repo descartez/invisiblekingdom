@@ -47,6 +47,10 @@ i {
   font-size: 0.75em;
 }
 
+.new-story a {
+  text-decoration: none;
+}
+
 .new-story a:hover {
   text-decoration: none;
 }
@@ -85,12 +89,6 @@ i {
   display: inline-block;
 }
 
-
-/*.icon:hover {
-  opacity: 0.4;
-  display: inline-block;
-}*/
-
 .top-triangle {
   margin-top: 5%;
   width: 0;
@@ -122,9 +120,23 @@ i {
 }
 
 .story h3 {
-  font-size: 1em;
+  font-size: 1.5em;
+  color:  #816474;
 }
 
+#story-banner{
+  font-family: 'Quicksand';
+  border: 2px solid #816474;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 10px;
+  padding: 5px;
+  background-color: white;
+}
+
+#story-banner h3 {
+  font-size: 2.2em;
+   color: #816474
+}
 
 .sign-out{
   font-family: 'Quicksand';
