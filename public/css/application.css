@@ -24,22 +24,26 @@ i {
 }
 
 .new-story {
-  color: #816474;
-  font-family: "Advent Pro";
   border: 2px solid #816474;
   margin-left: 25%;
   margin-right: 25%;
   margin-bottom: 3%;
   border-bottom-right-radius: 20px;
   border-top-left-radius: 10px;
-  display: block;
+  /*display: block;*/
   font-size: 2em;
   background-color: white;
   /*opacity: 0.7;*/
 }
 
+.new-story h3 {
+  color: #816474;
+  font-family: "Advent Pro";
+}
+
 .new-story:hover{
   background-color: #D9D1D5;
+  text-decoration: none;
 }
 .entrance {
   font-family: "Advent Pro";

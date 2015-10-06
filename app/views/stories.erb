@@ -1,11 +1,18 @@
 <h1 class="secondary-logo">Invisible Kingdom</h1>
-<div class="new-story"><a href ="/stories/new"><i class="fa fa-eye fa-5x"></i></a>
-<br><h3>discover</h3></a></div>
-<div class='story-feed'>
-  <% @stories.each do |story| %>
-  <article class="story">
-    <h3><%=story.content%></h3>
-    <p>(<%=story.longitude%>,<%=story.latitude%>)</p>
-  </article>
-  <% end %>
+<div class='row'>
+<div class="new-story col-md-6"><a href ="/stories/new"><i class="fa fa-eye fa-5x"></i></a>
+  <br><h3>discover</h3></a></div>
+<div class='new-story col-md-6'><a href="#"><i class="fa fa-map-marker fa-5x"></i><br><h3>map</h3><br></a></div>
 </div>
+  <div class='story-feed'>
+    <% @stories.each do |story| %>
+    <div class='row'>
+      <div class='col-md-12'>
+        <article class="story">
+          <h3><%=story.content%></h3>
+          <p>(<%=story.longitude%>,<%=story.latitude%>)</p>
+        </article>
+      </div>
+    </div>
+    <% end %>
+  </div>
