@@ -1,33 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
-    -->
-    <link rel="stylesheet" href="/css/normalize.css">
+  -->
+  <link rel="stylesheet" href="/css/normalize.css">
     <!--
     application.css is where you put your styles
-    -->
-    <link rel="stylesheet" href="css/application.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="/js/application.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-    <title>invisible kingdom</title>
-  </head>
-  <body>
-    <% if logged_in? %>
-    <form action="/sessions/<%= current_user.id %>" method="post">
-      <input name="_method" type="hidden" value="delete" >
-      <input class="nav-button" type="submit" value="Sign Out">
-    </form>
-    <% end %>
-    <div class='container'>
-      <div class="top-triangle icon"></div>
-      <%= yield %>
-      <div class="bottom-triangle icon"></div>
+  -->
+  <link rel="stylesheet" href="css/application.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/application.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <title>invisible kingdom</title>
+</head>
+<body>
+  <nav>
+    <div id="navbar">
+      <div class="container">
+        <ul class="navbar navbar-nav">
+          <div class="col-md-4">
+            <li class="nav-button">
+              <a href ="/stories/new">
+                <i class="fa fa-eye fa-5x"></i>
+                <h3>discover</h3>
+                <p>make a new story</p>
+              </a>
+            </li>
+          </div>
+          <div class="col-md-4">
+            <% if logged_in? %>
+            <li>
+              <i class="fa fa-sign-out fa-5x"></i>
+              <form action="/sessions/<%= current_user.id %>" method="post">
+                <input name="_method" type="hidden" value="delete" >
+                <input class="nav-button" type="submit" value="Sign Out">
+              </form>
+            </li>
+            <% end %>
+          </div>
+        </ul>
+      </div>
     </div>
-  </body>
+  </nav>
+  <div class='container'>
+    <div class="top-triangle icon"></div>
+    <%= yield %>
+    <div class="bottom-triangle icon"></div>
+  </div>
+</body>
 </html>
