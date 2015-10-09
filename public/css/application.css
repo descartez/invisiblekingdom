@@ -108,12 +108,12 @@ i {
 
 .story {
   font-family: 'Quicksand';
-  border: 2px solid #816474;
+  border: 1px solid #816474;
   margin-left: 10%;
   margin-right: 10%;
   margin-bottom: 5%;
-  border-bottom-right-radius: 20px;
-  border-top-left-radius: 10px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 10px;
   padding: 5px;
   background-color: white;
   /*opacity: 0.5;*/
@@ -124,8 +124,30 @@ i {
   color:  #816474;
 }
 
-#story-banner{
+#story-banner {
   font-family: 'Quicksand';
+  border: 2px solid #816474;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 10px;
+  padding: 5px;
+  background-color: #D9D1D5;
+}
+
+#story-banner h3 {
+  font-size: 2.2em;
+  color: #816474;
+}
+
+.sign-out {
+  font-family: 'Quicksand';
+  list-style-type: none;
+  position: absolute; right: 2px; top: 2px;
+  margin: 2%;
+}
+
+.nav-button {
+  font-family: 'Quicksand';
+  font-size: 1.2em;
   border: 2px solid #816474;
   border-bottom-right-radius: 20px;
   border-top-left-radius: 10px;
@@ -133,16 +155,6 @@ i {
   background-color: white;
 }
 
-#story-banner h3 {
-  font-size: 2.2em;
-   color: #816474
-}
-
-.sign-out{
-  font-family: 'Quicksand';
-  list-style-type: none;
-  position: absolute; right: 2px; top: 2px;
-  margin: 2%;
-  /*float: right;*/
-
+.nav-button:hover {
+  background-color: #D9D1D5;
 }

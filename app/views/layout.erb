@@ -21,7 +21,7 @@
     <% if logged_in? %>
     <form action="/sessions/<%= current_user.id %>" method="post">
       <input name="_method" type="hidden" value="delete" >
-      <input class="sign-out" type="submit" value="Sign Out">
+      <input class="nav-button" type="submit" value="Sign Out">
     </form>
     <% end %>
     <div class='container'>
